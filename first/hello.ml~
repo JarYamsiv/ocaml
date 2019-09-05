@@ -1,0 +1,8 @@
+(* defining a varaible works exactly like in SML *)
+let x = 5;;
+
+(* But we can have definitions like this which looks like imperative *)
+let y = string_of_int x;;
+
+(* string concat works the same way as in SML*)
+print_string ("Hello world the number is " ^ y ^ "\n");;
