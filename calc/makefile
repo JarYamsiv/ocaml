@@ -1,11 +1,10 @@
-all:
-	ocamllex lexer.mll
-	ocamlyacc parser.mly
-	ocamlc -c parser.mli
-	ocamlc -c lexer.ml
-	ocamlc -c parser.ml
-	ocamlc -c calc.ml
-	ocamlc -o calc lexer.cmo parser.cmo calc.cmo
+parse_obj = parser/lexer.cmo parser/parser.cmo
+all:parser calc
+	ocamlc -o calc $(parse_obj) calc.cmo
+	@echo "Done compiling you are ready to go"
 
-clean:
-	rm *.cmo *.mli *.cmi *~
+calc:calc.ml
+	ocamlc -c calc.ml
+
+parser:parser/lexer.mll parser/parser.mly
+	cd parser/ && $(MAKE) 
