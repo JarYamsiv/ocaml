@@ -1,0 +1,40 @@
+### Starting build.
+# Target: src/main.ml.depends, tags: { bin_annot, explain, extension:ml, file:src/main.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -modules src/main.ml > src/main.ml.depends # cached
+# Target: src/lexer.mli.depends, tags: { bin_annot, explain, extension:mli, file:src/lexer.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -modules src/lexer.mli > src/lexer.mli.depends # cached
+# Target: src/parser.mly.depends, tags: { bin_annot, explain, extension:mly, file:src/parser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, traverse }
+menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' src/parser.mly > src/parser.mly.depends # cached
+# Target: src/parser.mly, tags: { bin_annot, byte, compile, explain, extension:ml, extension:mly, file:src/parser.ml, file:src/parser.mly, infer, menhir, ocaml, parser, quiet, traverse }
+menhir --ocamlc 'ocamlfind ocamlc -bin-annot -I src -I lib' --explain --infer src/parser.mly # cached
+# Target: src/parser.mli.depends, tags: { bin_annot, explain, extension:mli, file:src/parser.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -modules src/parser.mli > src/parser.mli.depends # cached
+# Target: src/parser.cmi, tags: { bin_annot, byte, compile, explain, extension:mli, file:src/parser.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -bin-annot -I src -I lib -o src/parser.cmi src/parser.mli # cached
+# Target: src/lexer.cmi, tags: { bin_annot, byte, compile, explain, extension:mli, file:src/lexer.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -bin-annot -I src -I lib -o src/lexer.cmi src/lexer.mli # cached
+# Target: lib/util.mli.depends, tags: { bin_annot, explain, extension:mli, file:lib/util.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -modules lib/util.mli > lib/util.mli.depends # cached
+# Target: lib/util.cmi, tags: { bin_annot, byte, compile, explain, extension:mli, file:lib/util.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -bin-annot -I lib -I src -o lib/util.cmi lib/util.mli # cached
+# Target: src/main.cmo, tags: { bin_annot, byte, compile, explain, extension:cmo, extension:ml, file:src/main.cmo, file:src/main.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -bin-annot -I src -I lib -o src/main.cmo src/main.ml # cached
+# Target: src/lexer.mll, tags: { bin_annot, explain, extension:mll, file:src/lexer.mll, lexer, ocaml, ocamllex, quiet, traverse }
+/usr/bin/ocamllex.opt -q src/lexer.mll # cached
+# Target: src/lexer.ml.depends, tags: { bin_annot, explain, extension:ml, file:src/lexer.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -modules src/lexer.ml > src/lexer.ml.depends # cached
+# Target: src/parser.ml.depends, tags: { bin_annot, explain, extension:ml, file:src/parser.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -modules src/parser.ml > src/parser.ml.depends # cached
+# Target: src/parser.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:src/parser.cmx, file:src/parser.ml, implem, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -bin-annot -I src -I lib -o src/parser.cmx src/parser.ml # cached
+# Target: src/lexer.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:src/lexer.cmx, file:src/lexer.ml, implem, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -bin-annot -I src -I lib -o src/lexer.cmx src/lexer.ml # cached
+# Target: lib/util.ml.depends, tags: { bin_annot, explain, extension:ml, file:lib/util.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -modules lib/util.ml > lib/util.ml.depends # cached
+# Target: lib/util.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:lib/util.cmx, file:lib/util.ml, implem, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -bin-annot -I lib -I src -o lib/util.cmx lib/util.ml # cached
+# Target: src/main.cmx, tags: { bin_annot, compile, explain, extension:cmx, extension:ml, file:src/main.cmx, file:src/main.ml, implem, native, ocaml, quiet, traverse }
+ocamlfind ocamlopt -c -bin-annot -I src -I lib -o src/main.cmx src/main.ml # cached
+# Target: src/main.native, tags: { bin_annot, dont_link_with, explain, extension:native, file:src/main.native, link, native, ocaml, program, quiet, traverse }
+ocamlfind ocamlopt -linkpkg -I lib -I src lib/util.cmx src/parser.cmx src/lexer.cmx src/main.cmx -o src/main.native # cached
+# Compilation successful.
