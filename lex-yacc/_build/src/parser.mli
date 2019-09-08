@@ -17,4 +17,4 @@ exception Error
 
 (* The monolithic API. *)
 
-val main: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (int)
+val main: (Lexing.lexbuf -> token) -> Lexing.lexbuf -> (Ast.exp)

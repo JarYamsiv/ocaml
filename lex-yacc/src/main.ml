@@ -31,6 +31,6 @@ let main () =
   let lexbuf = Lexing.from_string prog in
   let result = Parser.main Lexer.token lexbuf in
     print_string (prog ^ " = ");
-    Printf.printf "%d\n" result
+    Printf.printf "%d\n" (Compile.compile result)
 
 let () = main ()
